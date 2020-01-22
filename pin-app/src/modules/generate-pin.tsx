@@ -1,28 +1,37 @@
 import React from 'react';
+import './generate-pin.css';
+
+
 
 
 export default class Pin extends React.Component<any, any> {
     constructor(props: any){
         super(props);
         this.state = {
-            pins:[],
+            pins: ["1111","1111","1111","1111","1111"]
         }
+        
+    }
+    componentDidMount() {
+        let btn = document.getElementById("generateNewPin")!;
+        btn.addEventListener("click", (e:Event) => this.update_random_number ());
     }
     
     render= () => {
-        //const pines = this.state;
         return (
             <div>
-                <button onClick={this.update_random_number}>click</button>
-                <b>Call Pin Generator:</b>
-                {this.state.pins.map((pin:number) => <li key={pin}>{pin}</li>)}
+                <ul className="pinDisplay">
+                {this.state.pins.map((pin: number, index: number) => <li key={index} className="pin">{pin}</li>)}
+                </ul>
+                
             </div>
         );
     }
     update_random_number = () => {
-        
+               
         this.setState({
             pins: this.show_random_number()
+            
         });
     }
 

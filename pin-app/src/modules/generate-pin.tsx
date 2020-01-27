@@ -21,22 +21,24 @@ export default class Pin extends React.Component<any, any> {
         return (
             <div>
                 <ul className="pinDisplay">
-                {this.state.pins.map((pin: number, index: number) => <li key={index} className="pin">{pin}</li>)}
+                {this.state.pins.map((pin: [number], index: number) => <li key={index} className="pin">{pin}</li>)}
                 </ul>
                 
             </div>
         );
     }
     update_random_number = () => {
-               
+        const pin = this.show_random_number();       
         this.setState({
-            pins: this.show_random_number()
-            
+            pins: pin
         });
+
+        this.props.parentCallback(pin)
     }
 
     show_random_number = () => {
-        let result: string[] = [];
+        let result: Array<string> = [];
+        console.log(result instanceof Array)
         for (let i = 0; i < 5; i++) {
             const pin = this.fourdigits().join("");
             if (!result.includes(pin))
@@ -44,7 +46,9 @@ export default class Pin extends React.Component<any, any> {
             else
                 i--;
         }
-        return result; // show popup with a random number
+        
+        console.log(result instanceof Array)
+        return result;
         
     }
 

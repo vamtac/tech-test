@@ -38,7 +38,6 @@ export default class Pin extends React.Component<any, any> {
 
     show_random_number = () => {
         let result: Array<string> = [];
-        console.log(result instanceof Array)
         for (let i = 0; i < 5; i++) {
             const pin = this.fourdigits().join("");
             if (!result.includes(pin))
@@ -46,8 +45,6 @@ export default class Pin extends React.Component<any, any> {
             else
                 i--;
         }
-        
-        console.log(result instanceof Array)
         return result;
         
     }

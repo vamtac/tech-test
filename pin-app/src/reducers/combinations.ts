@@ -6,8 +6,8 @@ const combinationsReducerDefaultState:Combination[] = [];
 const combinationsReducer = (state = combinationsReducerDefaultState, action: CombinationActionTypes): Combination[] => {
   switch (action.type) {
     case "ADD_COMBINATION":
-      let pinAlreadyStored = state.findIndex(el => el.pin == action.combination.pin);
-      if(pinAlreadyStored == -1)
+      let pinAlreadyStored = state.findIndex(el => el.pin === action.combination.pin);
+      if(pinAlreadyStored === -1)
         return [...state, action.combination];
       return state
     case "REMOVE_COMBINATION":

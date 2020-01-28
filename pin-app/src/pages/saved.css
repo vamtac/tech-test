@@ -1,0 +1,26 @@
+.savedPinContent{
+    height: calc(100% - 47px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+}
+.pinGroupInfo {
+    margin: 5px;
+}
+
+.deletePin {
+    background-color: #F52637;
+    border: none;
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+}
+.pinGroupInfo input{
+    padding: 5px;
+    border: 1px solid gray;
+    font-size: 16px;
+    margin: 0 10px;
+}

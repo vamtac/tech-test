@@ -21,7 +21,7 @@ export default class Pin extends React.Component<any, any> {
         return (
             <div>
                 <ul className="pinDisplay">
-                {this.state.pins.map((pin: [number], index: number) => <li key={index} className="pin">{pin}</li>)}
+                {this.state.pins.map((pin: [string], index: number) => <li key={index} className="pin">{pin}</li>)}
                 </ul>
                 
             </div>

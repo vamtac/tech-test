@@ -14,37 +14,39 @@ import { AppState } from '../store/configureStore';
 type Props = LinkDispatchProps & LinkStateProp;
 
 export class Generate extends React.Component<Props, any>{
-    
-    onAdd = (pinNumber:Array<string>) =>{
-        const combination: Combination ={
-            pin:pinNumber
+
+    onAdd = (pinNumber: Array<string>) => {
+        const combination: Combination = {
+            pin: pinNumber
         }
         this.props.startAddCombination(combination)
     }
-    render()  {
+    render() {
         return (
             <div className="generatePinContent">
-                <Pin parentCallback = {this.getThePin}/>
-                <button id="generateNewPin" >GENERATE</button>  
-                <button onClick={() => this.shouldBeAdded()}>SAVE</button>
+                <Pin parentCallback={this.getThePin} />
+                <div className="pinButtons">
+                    <button id="generateNewPin" >GENERATE</button>
+                    <button onClick={() => this.shouldBeAdded()}>SAVE</button>
+                </div>
             </div>
         );
     }
-    shouldBeAdded(){
-        if(this.state.message){
+    shouldBeAdded() {
+        if (this.state.message) {
             this.onAdd(this.state.message)
         }
     }
-    getThePin = (pin:Array<string>)=>{
-        this.setState({message: pin})
+    getThePin = (pin: Array<string>) => {
+        this.setState({ message: pin })
     }
-    
+
 }
 
 interface LinkStateProp {
     combinations: Combination[];
 }
-interface LinkDispatchProps{
+interface LinkDispatchProps {
     startAddCombination: (combination: Combination) => void;
 }
 
@@ -53,7 +55,7 @@ const mapStateToProps = (state: AppState): LinkStateProp => ({
     combinations: state.combinations
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>): LinkDispatchProps=> ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>): LinkDispatchProps => ({
     startAddCombination: bindActionCreators(startAddCombination, dispatch)
 });
 
@@ -61,4 +63,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>): Link
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-) (Generate);
+)(Generate);

@@ -1,18 +1,26 @@
+.generatePinContent {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 47px);
+}
+
 .generatePinContent a,
-.generatePinContent button{
-color: #0198EC;
-border: 1px solid #0198EC;
-text-decoration: none;
-margin: 0 10px;
-padding: 5px 0;
-border-radius: 5px;
-cursor: pointer;
-width: 150px;
-display: inline-block;
-font-size: 16px;
+.pinButtons button{
+    color: #0198EC;
+    border: 1px solid #0198EC;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    display: inline-block;
+    font-size: 16px;
 }
 .generatePinContent a:hover,
-.generatePinContent button:hover{
+.pinButtons button:hover{
     color: #ffffff;
     background-color: #0198EC;
 }

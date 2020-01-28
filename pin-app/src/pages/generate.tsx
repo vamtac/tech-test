@@ -14,27 +14,23 @@ import { AppState } from '../store/configureStore';
 type Props = LinkDispatchProps & LinkStateProp;
 
 export class Generate extends React.Component<Props, any>{
-
-    onAdd = (pinNumber: Array<string>) => {
-        const combination: Combination = {
-            pin: pinNumber
-        }
-        this.props.startAddCombination(combination)
-    }
     render() {
         return (
             <div className="generatePinContent">
                 <Pin parentCallback={this.getThePin} />
                 <div className="pinButtons">
                     <button id="generateNewPin" >GENERATE</button>
-                    <button onClick={() => this.shouldBeAdded()}>SAVE</button>
+                    <button onClick={() => this.onAdd()}>SAVE</button>
                 </div>
             </div>
         );
     }
-    shouldBeAdded() {
-        if (this.state.message) {
-            this.onAdd(this.state.message)
+    onAdd = () => {
+        if (this.state && this.state.message) {
+            const combination: Combination = {
+                pin: this.state.message
+            }
+            this.props.startAddCombination(combination)
         }
     }
     getThePin = (pin: Array<string>) => {
